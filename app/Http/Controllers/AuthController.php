@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
-
+use App\Http\Requests\LoginRequest;
 
 class AuthController extends Controller
 {
@@ -15,31 +13,29 @@ class AuthController extends Controller
         return view('login');
     }
 
-    public function auth (LoginRequest $request)
-{
-    if (Auth::attempt($request->validated())) {
+    public function auth(LoginRequest $request)
+    {
+        if (Auth::attempt($request->validated())) {
 
-        $request->session()->regenerate();
+            $request->session()->regenerate();
 
-        return redirect()->route('dashboard')->with('success', 'Selamat Datang, ' . Auth::user()->name);
+            return redirect()->route('dashboard')
+                ->with('success', 'Selamat Datang, ' . Auth::user()->name);
+        }
+
+        return back()->withErrors([
+            'email' => 'Email atau password tidak valid'
+        ]);
     }
 
-    return back()->withErrors([
-        'email' => 'Email atau password tidak valid',
-    ]);
-}
+    public function logout(Request $request) // <-- diperbaiki di sini
+    {
+        Auth::logout();
 
-public function logout (Request $request)
-{
-    //mengakhiri sesi pengguna
-    Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-    //menghapus session pengguna
-    $request->session()->regenerateToken();
-
-    //redirect ke halaman login setelah logout
-    return redirect()->route('login')
-    ->with('success', 'Anda Telah Keluar!');
-}
-
+        return redirect()->route('login')
+            ->with('success', 'Anda telah keluar aplikasi!');
+    }
 }

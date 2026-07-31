@@ -10,18 +10,21 @@ use App\Policies\DashboardPolicy;
 use App\Models\Penjualan;
 use App\Models\Produk;
 use App\Models\ItemPenjualan;
-use App\Policies\ItemPenjualanPolicy;
+use App\Models\ItemPenjualanPolicy;
 use App\Policies\PenjualanPolicy;
 use App\Policies\ProdukPolicy;
 
 class AppServiceProvider extends ServiceProvider
 {
-    protected $policies =[
+    protected $policies = [
         User::class     => DashboardPolicy::class,
-        Produk::class   => ProdukPolicy::class,
-        Penjualan::class   => PenjualanPolicy::class,
-        ItemPenjualan::class   => ItemPenjualanPolicy::class
+        Produk::class => ProdukPolicy::class,
+        Penjualan::class => PenjualanPolicy::class,
+        ItemPenjualan::class => ItemPenjualanPolicy::class
     ];
+    /**
+     * Register any application services.
+     */
     public function register(): void
     {
         //

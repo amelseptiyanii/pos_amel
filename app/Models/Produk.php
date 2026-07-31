@@ -17,16 +17,11 @@ class Produk extends Model
         'nama',
         'harga_beli',
         'harga_jual',
-        'stok',        
+        'stok',
     ];
 
-    public function user ()
+    public function user()
     {
-        return $this->belongsTo(User::class,'user_id');
-    }
-
-    public function itemPenjualan ()
-    {
-        return $this->hasMany(ItemPenjualan::class,'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

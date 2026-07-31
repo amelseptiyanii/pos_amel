@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class ItemPenjualan extends Model
+class itemPenjualan extends Model
 {
+    use HasFactory;
 
-        use HasFactory;
-
-        protected $table = 'item_penjualan';
-
-    protected $fillable =[
+    protected $table = 'item_penjualan';
+    
+    protected $fillable = [
         'penjualan_id',
         'produk_id',
         'kuantitas',
@@ -20,13 +19,12 @@ class ItemPenjualan extends Model
         'subtotal',
     ];
 
-    public function penjualan()
-    {
-        return $this->belongsTo(Penjualan::class,'penjualan_id');
-    }
-
     public function produk()
     {
-        return $this->belongsTo(Produk::class,'produk_id');
+        return $this->belongsTo(Produk::class, 'produk_id');
     }
+     public function penjualan()
+     {
+        return $this->belongsTo(Penjualan::class, 'penjualan_id');
+     }
 }

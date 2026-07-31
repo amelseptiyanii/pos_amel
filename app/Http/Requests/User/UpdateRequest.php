@@ -18,34 +18,32 @@ class UpdateRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            'name' =>'required|string|max:100',
-                'email' => [
+            'name' => 'required|string|max:100',
+                   'email' => [
             'required',
             'email',
             Rule::unique('users')->ignore($this->user->id),
-                ],
-
+        ],
             'password' => 'nullable|min:8',
             'role_id' => 'required',
-            'is_active'=>'boolean'
-        ];
-    }
+            'is_active' => 'boolean'
+    ];
+}
 
-public function messages(): array
-{
-    return [
-            'name.required' => 'Nama Wajib diisi.',
-            'name.max' => 'Maksimal panjang nama 100 karakter.',
-            'email.required' =>'Email Wajib diisi.',
-            'email.email' => 'Format email tidak valid.',
-            'password.min' => 'Password minimal :min karakter.',
-            'role.required' =>'Role Wajib diisi.'
-            
-        ]; 
+    public function messages(): array
+    {
+        return [
+            'name.required'     => 'Nama Wajib diisi.',
+            'name.max'          => 'Maksimal panjang nama 100 karakter.',
+            'email.required'    => 'Email wajib diisi.',
+            'email.email'       => 'Format email tidak valid.',
+            'password.min'      => 'Password minimal :min karakter.',
+            'role.required'      => 'Role wajib diisi.'
+        ];
     }
 }

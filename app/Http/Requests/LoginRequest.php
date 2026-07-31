@@ -17,22 +17,23 @@ class LoginRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            'email'  =>['required','email'],
-            'password'  =>['required','min:8'],
+            'email'    => ['required', 'email'],
+            'password' => ['required', 'min:8'],
         ];
     }
-public function messages(): array
-    {
-        return [
-            'email.required'    => 'Email wajib diisi.',
-            'email.email'       => 'Format email tidak valid.',
-            'password.required' => 'Password wajib diisi.',
-            'password.min'      => 'Password minimal :min karakter.',
-        ];
-    }
+
+    public function messages(): array
+{
+    return [
+        'email.required'    => 'Email wajib diisi.',
+        'email.email'       => 'Format email tidak valid.',
+        'password.required' => 'Password wajib diisi.',
+        'password.min'      => 'Password minimal :min karakter.',
+    ];
+}
 }

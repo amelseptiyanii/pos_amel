@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     protected $fillable = [
-        'nama'
+        'name'
     ];
 
-    public function user ()
+
+    /**
+     * Satu role memiliki banyak user
+     */
+    public function users()
     {
         return $this->hasMany(User::class, 'role_id');
     }

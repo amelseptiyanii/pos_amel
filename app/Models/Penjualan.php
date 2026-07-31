@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\User;
 
 class Penjualan extends Model
 {
@@ -16,7 +15,12 @@ class Penjualan extends Model
         'user_id',
         'total_pembayaran',
         'metode_pembayaran',
-        'status'
+        'status',
+        'keterangan'
+    ];
+
+    protected $casts = [
+        'total_pembayaran' => 'decimal:2',
     ];
 
     public function user()

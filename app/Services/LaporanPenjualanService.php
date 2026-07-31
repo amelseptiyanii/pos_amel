@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class LaporanPenjualanService
 {
@@ -14,9 +14,9 @@ class LaporanPenjualanService
             ->where('status', 'COMPLETED')
             ->selectRaw('
                 COUNT(*) as total_transaksi,
-                COALESCE(SUM(total_pembayaran), 0) as total_penjualan,
-                COALESCE(SUM(CASE WHEN metode_pembayaran = "CASH" THEN total_pembayaran ELSE 0 END), 0) as total_cash,
-                COALESCE(SUM(CASE WHEN metode_pembayaran != "CASH" THEN total_pembayaran ELSE 0 END), 0) as total_non_tunai
+                SUM(total_pembayaran) as total_penjualan,
+                SUM(CASE WHEN metode_pembayaran = "CASH" THEN total_pembayaran ELSE 0 END) as total_cash,
+                SUM(CASE WHEN metode_pembayaran != "CASH" THEN total_pembayaran ELSE 0 END) as total_non_tunai
             ')
             ->first();
 
@@ -28,6 +28,7 @@ class LaporanPenjualanService
         ];
     }
 
+
     public function produkTerlarisHariIni(int $limit = 5)
     {
         return DB::table('item_penjualan')
@@ -35,11 +36,15 @@ class LaporanPenjualanService
             ->join('produk', 'produk.id', '=', 'item_penjualan.produk_id')
             ->whereDate('penjualan.created_at', Carbon::today())
             ->where('penjualan.status', 'COMPLETED')
-            ->groupBy('produk.id', 'produk.nama', 'produk.stok')
             ->select(
                 'produk.nama',
                 'produk.stok',
                 DB::raw('SUM(item_penjualan.kuantitas) as total_terjual')
+            )
+            ->groupBy(
+                'produk.id',
+                'produk.nama',
+                'produk.stok'
             )
             ->orderByDesc('total_terjual')
             ->limit($limit)

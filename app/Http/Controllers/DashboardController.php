@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\LaporanPenjualanService;
 use App\Services\MonitoringStokService;
 use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
-        public function __construct(
+    public function __construct(
         protected LaporanPenjualanService $laporanService,
         protected MonitoringStokService $stokService
-    ) {}
+    ) {
+        $this->laporanService = $laporanService;
+        $this->stokService = $stokService;
+    }
 
     public function index()
     {
@@ -27,4 +29,3 @@ class DashboardController extends Controller
         ]);
     }
 }
-
