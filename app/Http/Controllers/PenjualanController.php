@@ -71,19 +71,19 @@ class PenjualanController extends Controller
     }
 
     public function edit(Penjualan $penjualan)
-    {
-        // $this->authorize('update', $penjualan); // Dinonaktifkan sementara
-
-        if ($penjualan->status === 'COMPLETED') {
-            abort(403, 'Transaksi sudah selesai.');
-        }
-
-        $penjualan->load('itemPenjualan.produk');
-        $products = Produk::orderBy('nama')->get();
-        $mode = 'edit';
-
-        return view('penjualan.pos', compact('penjualan', 'products', 'mode'));
+{
+    if ($penjualan->status === 'COMPLETED') {
+        abort(403, 'Transaksi sudah selesai.');
     }
+
+    $penjualan->load('itemPenjualan.produk');
+    $products = Produk::orderBy('nama')->get();
+    $mode = 'edit';
+
+    $sale = $penjualan;
+
+    return view('penjualan.pos', compact('sale', 'products', 'mode'));
+}
 
     public function update(Request $request, Penjualan $penjualan)
     {

@@ -3,7 +3,7 @@
 
         <!-- Brand dengan nuansa feminin -->
         <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ route('dashboard') }}" style="color: #d63384; font-family: 'Poppins', sans-serif; letter-spacing: 0.5px;">
-            <i class="fa-solid fa-wand-magic-sparkles me-2" style="font-size: 1.1rem;"></i> SptuStore
+            <i class="fa-solid fa-wand-magic-sparkles me-2" style="font-size: 1.1rem;"></i> SptyStore
         </a>
 
         <button class="navbar-toggler border-0 shadow-none" type="button"
