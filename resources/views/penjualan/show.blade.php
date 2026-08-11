@@ -38,18 +38,18 @@
                         </div>
                         <div>
                             <h5 class="card-title mb-1 fw-bold text-dark-rose">
-                                Kasir : {{ $sale->user->name ?? 'Admin' }}
+                                Kasir : {{ $penjualan->user->name ?? 'Admin' }}
                             </h5>
                             <h6 class="card-subtitle text-muted small">
                                 <i class="fa-regular fa-calendar-days me-1"></i> Tanggal Transaksi : 
-                                <span class="fw-semibold text-dark">{{ $sale->created_at->format('d-m-Y H:i:s') }}</span>
+                                <span class="fw-semibold text-dark">{{ $penjualan->created_at->format('d-m-Y H:i:s') }}</span>
                             </h6>
                         </div>
                     </div>
                     <hr class="text-muted opacity-25">
                     <div class="d-flex justify-content-between align-items-center mt-3">
                         <span class="text-muted fw-medium">Total Pembayaran :</span>
-                        <h4 class="text-rose mb-0 fw-bold">Rp. {{ number_format($sale->total_pembayaran, 0, ',', '.') }}</h4>
+                        <h4 class="text-rose mb-0 fw-bold">Rp. {{ number_format($penjualan->total_pembayaran, 0, ',', '.') }}</h4>
                     </div>
                 </div>
             </div>
@@ -78,8 +78,7 @@
                     <tbody>
                         @php $i = 1; @endphp
 
-                        {{-- Perbaikan penulisan relasi itemPenjualan sesuai dengan Controller --}}
-                        @forelse($sale->itemPenjualan as $item)
+                        @forelse($penjualan->itemPenjualan as $item)
                         <tr>
                             <td class="fw-semibold">{{ $i++ }}</td>
                             <td>
@@ -91,7 +90,6 @@
                             <td>
                                 <span class="fw-bold text-dark-rose">{{ $item->produk->nama ?? 'Produk tidak ditemukan' }}</span>
                             </td>
-                            {{-- Sesuaikan dengan kolom harga di tabel produk (biasanya harga atau harga_jual) --}}
                             <td>Rp. {{ number_format($item->produk->harga_jual ?? $item->produk->harga ?? 0, 0, ',', '.') }}</td>
                             <td>
                                 <span class="badge qty-badge">

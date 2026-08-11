@@ -320,7 +320,7 @@ class="form-control"
 placeholder="Cari nomor transaksi / kasir...">
 
 <button class="btn btn-dark px-4">
-🔍 Search
+🔍 Cari
 </button>
 </div>
 

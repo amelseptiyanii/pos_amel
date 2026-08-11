@@ -14,7 +14,7 @@
     </h5>
 
     <div class="card-body login-body-aesthetic">
-        <p class="text-muted small mb-4" style="color: #885d6e !important;">✨ Silakan masuk ke akun kasir Anda ✨</p>
+        <p class="text-muted small mb-4" style="color: #885d6e !important;"> Silakan masuk ke akun </p>
 
         <form action="{{ route('auth') }}" method="POST">
             @csrf
@@ -23,7 +23,7 @@
                 <label class="form-label">Email address</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
-                    <input type="email" name="email" class="form-control" placeholder="nama@email.com" value="{{ old('email') }}">
+                    <input type="email" name="email" class="form-control" placeholder="Masukkan email" value="{{ old('email') }}">
                 </div>
 
                 @error('email')
@@ -35,7 +35,7 @@
                 <label class="form-label">Password</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
-                    <input type="password" name="password" class="form-control" placeholder="••••••••">
+                    <input type="password" name="password" class="form-control" placeholder="Masukkan Password">
                 </div>
 
                 @error('password')

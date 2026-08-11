@@ -113,7 +113,7 @@ class PenjualanController extends Controller
 
         return redirect()
             ->route('penjualan.index')
-            ->with('success', 'Transaksi berhasil diselesaikan ✅');
+            ->with('success', 'Transaksi berhasil diselesaikan ');
     }
 
     public function destroy(Penjualan $penjualan)

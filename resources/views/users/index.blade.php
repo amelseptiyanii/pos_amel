@@ -266,7 +266,7 @@ class="form-control"
 placeholder="Cari member...">
 
 <button class="btn btn-dark">
-🔍 Search
+🔍 Cari
 </button>
 
 </div>
