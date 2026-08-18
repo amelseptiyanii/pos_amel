@@ -49,29 +49,37 @@ body::after {
 /* WRAPPER */
 .member-wrapper{
     margin-top:40px;
-    max-width: 1280px;
+    max-width: 1000px;
+    margin-bottom: 60px;
 }
 
 /* HEADER */
 .member-header{
     background: linear-gradient(135deg, #f43f5e, #be123c);
     color:white;
-    padding:45px;
-    border-radius:30px;
-    margin-bottom:35px;
+    padding:40px;
+    border-radius:28px;
+    margin-bottom:30px;
     box-shadow: 0 20px 40px rgba(225, 29, 72, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .member-header h1{
     font-family: 'Playfair Display', serif;
-    font-size:42px;
+    font-size:36px;
     font-weight:700;
     letter-spacing: 0.5px;
+    margin-bottom: 5px;
 }
 
 .member-header p{
     color: #fce7f3;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
+    margin-bottom: 0;
 }
 
 /* ADD BUTTON */
@@ -79,11 +87,13 @@ body::after {
     background: #ffffff;
     color: #be123c;
     border: none;
-    padding: 12px 28px;
+    padding: 12px 26px;
     border-radius: 30px;
     font-weight: 700;
     transition: .3s;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    display: inline-block;
 }
 
 .add-member:hover{
@@ -96,16 +106,21 @@ body::after {
 .search-member{
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(12px);
-    padding: 15px;
+    padding: 12px 20px;
     border-radius: 20px;
-    margin-bottom:35px;
+    margin-bottom: 25px;
     box-shadow: 0 10px 30px rgba(225, 29, 72, 0.05);
 }
 
 .search-member input{
     border: none;
-    padding: 15px;
+    padding: 10px;
     background: transparent;
+}
+
+.search-member input:focus {
+    background: transparent;
+    box-shadow: none;
 }
 
 .search-member .btn-dark {
@@ -121,217 +136,209 @@ body::after {
     background: #9f1239;
 }
 
-/* CARD USER */
-.member-card{
+/* LIST ITEM CONTAINER (BARIS KE BAWAH) */
+.member-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* CARD USER HORIZONTAL */
+.member-row-card{
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
-    border-radius:24px;
-    padding:30px;
-    height:100%;
-    position:relative;
-    overflow:hidden;
-    transition:.4s;
-    box-shadow: 0 12px 30px rgba(225, 29, 72, 0.06);
+    border-radius: 20px;
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+    box-shadow: 0 8px 25px rgba(225, 29, 72, 0.05);
     border: 1px solid rgba(254, 205, 211, 0.4);
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-.member-card::before{
-    content:"";
-    position:absolute;
-    width:120px;
-    height:120px;
-    background:#f43f5e;
-    border-radius:50%;
-    top:-50px;
-    right:-50px;
-    opacity:.12;
+.member-row-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(225, 29, 72, 0.1);
+    border-color: rgba(244, 63, 94, 0.3);
 }
 
-.member-card:hover{
-    transform:translateY(-8px);
-    box-shadow: 0 20px 40px rgba(225, 29, 72, 0.12);
+/* INFO BAGIAN KIRI (Avatar + Detail) */
+.member-info-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 /* AVATAR */
 .avatar{
-    width:80px;
-    height:80px;
-    border-radius:50%;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
     background: linear-gradient(135deg, #f43f5e, #fda4af);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:32px;
-    font-weight:700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
     font-family: 'Playfair Display', serif;
-    box-shadow: 0 8px 20px rgba(244, 63, 94, 0.25);
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.25);
+    flex-shrink: 0;
 }
 
-/* NAME */
+/* TEXT DETAILS */
+.member-details {
+    display: flex;
+    flex-direction: column;
+}
+
 .member-name{
     font-family: 'Playfair Display', serif;
-    font-size:23px;
-    font-weight:700;
-    margin-top:20px;
-    color:#4a3540;
+    font-size: 19px;
+    font-weight: 700;
+    color: #4a3540;
+    margin-bottom: 2px;
 }
 
 .member-email{
-    color:#885d6e;
-    font-size:14px;
+    color: #885d6e;
+    font-size: 13.5px;
 }
 
-/* ROLE */
+/* ROLE BADGE */
 .member-role{
-    display:inline-block;
-    margin-top:15px;
-    background:#fff1f2;
-    color:#be123c;
-    padding:8px 18px;
-    border-radius:30px;
-    font-size:13px;
-    font-weight:700;
+    background: #fff1f2;
+    color: #be123c;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    font-weight: 700;
     border: 1px solid #fecdd3;
+    white-space: nowrap;
 }
 
-/* ACTION */
+/* ACTION BUTTONS */
 .action-area{
-    margin-top:25px;
     display: flex;
     gap: 8px;
+    align-items: center;
 }
 
 .btn-edit{
-    background:#ffe4e6;
-    color:#9f1239;
-    border:none;
-    border-radius:20px;
-    padding:9px 20px;
-    font-weight:700;
+    background: #ffe4e6;
+    color: #9f1239;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 13px;
     transition: 0.3s;
+    text-decoration: none;
 }
 
 .btn-delete{
-    background:#f43f5e;
-    color:white;
-    border:none;
-    border-radius:20px;
-    padding:9px 20px;
-    font-weight:700;
+    background: #f43f5e;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 13px;
     transition: 0.3s;
 }
 
 .btn-edit:hover{
     background: #fecdd3;
     color: #881337;
-    transform:scale(1.03);
 }
 
 .btn-delete:hover{
-    background:#e11d48;
-    transform:scale(1.03);
+    background: #e11d48;
+}
+
+@media (max-width: 768px) {
+    .member-row-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .action-area {
+        width: 100%;
+        justify-content: flex-end;
+    }
 }
 </style>
 
 <div class="container member-wrapper">
 
-<div class="member-header">
-<h1>
-<i class="fa-solid fa-shoe-prints me-2"></i> Sneaker Team
-</h1>
+    <!-- Header -->
+    <div class="member-header">
+        <div>
+            <h1>
+                <i class="fa-solid fa-shoe-prints me-2"></i> Sneaker Team
+            </h1>
+            <p>Manajemen anggota dan akses pengguna toko sepatu</p>
+        </div>
+        <div>
+            <a href="{{ route('admin.users.create') }}" class="btn add-member">
+                + Tambah Member
+            </a>
+        </div>
+    </div>
 
-<p>
-Manajemen anggota dan akses pengguna toko sepatu
-</p>
+    <!-- Form Pencarian -->
+    <form action="{{ route('admin.users') }}" method="GET" class="search-member">
+        <div class="input-group">
+            <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Cari member berdasarkan nama atau email...">
+            <button class="btn btn-dark">
+                🔍 Cari
+            </button>
+        </div>
+    </form>
 
-<a href="{{ route('admin.users.create') }}"
-class="btn add-member mt-2">
-+ Tambah Member
-</a>
-</div>
+    <!-- Daftar List Member (Berjajar ke Bawah) -->
+    <div class="member-list">
+        @foreach ($users as $user)
+            <div class="member-row-card">
+                <!-- Kiri: Avatar & Info -->
+                <div class="member-info-group">
+                    <div class="avatar">
+                        {{ strtoupper(substr($user->name,0,1)) }}
+                    </div>
+                    <div class="member-details">
+                        <div class="member-name">{{ $user->name }}</div>
+                        <div class="member-email">{{ $user->email }}</div>
+                    </div>
+                </div>
 
+                <!-- Tengah: Role -->
+                <div>
+                    <span class="member-role">
+                        ⭐ {{ $user->role->name }}
+                    </span>
+                </div>
 
-<form action="{{ route('admin.users') }}"
-method="GET"
-class="search-member">
+                <!-- Kanan: Tombol Aksi -->
+                <div class="action-area">
+                    <a href="{{ route('admin.users.edit',$user) }}" class="btn btn-edit">
+                        ✏ Edit
+                    </a>
 
-<div class="input-group">
-
-<input
-type="text"
-name="search"
-value="{{ request('search') }}"
-class="form-control"
-placeholder="Cari member...">
-
-<button class="btn btn-dark">
-🔍 Cari
-</button>
-
-</div>
-
-</form>
-
-
-<div class="row">
-
-@foreach ($users as $user)
-
-<div class="col-md-4 mb-4">
-
-<div class="member-card">
-
-<div class="avatar">
-{{ strtoupper(substr($user->name,0,1)) }}
-</div>
-
-<div class="member-name">
-{{ $user->name }}
-</div>
-
-<div class="member-email">
-{{ $user->email }}
-</div>
-
-<div>
-<span class="member-role">
-⭐ {{ $user->role->name }}
-</span>
-</div>
-
-
-<div class="action-area">
-
-<a href="{{ route('admin.users.edit',$user) }}"
-class="btn btn-edit">
-✏ Edit
-</a>
-
-
-<form action="{{ route('admin.users.destroy',$user) }}"
-method="POST"
-class="d-inline">
-
-@csrf
-@method('DELETE')
-
-<button class="btn btn-delete"
-onclick="return confirm('Yakin hapus user ini?')">
-🗑 Hapus
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-</div>
-
-@endforeach
-
-</div>
+                    <form action="{{ route('admin.users.destroy',$user) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-delete" onclick="return confirm('Yakin hapus user ini?')">
+                            🗑 Hapus
+                        </button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+    </div>
 
 </div>
 

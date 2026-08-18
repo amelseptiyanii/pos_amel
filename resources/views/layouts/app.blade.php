@@ -27,6 +27,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 20px;
+            transition: opacity 0.5s ease;
         }
 
         .alert-success-feminine i {
@@ -41,10 +42,22 @@
 <div class="container mt-3">
 
     @if(session('success'))
-        <div class="alert-success-feminine">
+        <div class="alert-success-feminine" id="success-alert">
             <i class="fa-solid fa-circle-check"></i>
             {{ session('success') }}
         </div>
+
+        <script>
+            setTimeout(function() {
+                let alertBox = document.getElementById('success-alert');
+                if (alertBox) {
+                    alertBox.style.opacity = '0';
+                    setTimeout(function() {
+                        alertBox.style.display = 'none';
+                    }, 500);
+                }
+            }, 5000);
+        </script>
     @endif
 
     <!-- Isi konten yang kita kirimkan dari views lain -->

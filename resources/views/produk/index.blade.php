@@ -370,7 +370,7 @@ Stok {{ $product->stok }}
 Rp {{ number_format($product->harga_jual,0,',','.') }}
 </div>
 
-<div class="text-muted small mt-1">
+<div class="text-muted small mt-1" style="display: none;">
 Modal :
 Rp {{ number_format($product->harga_beli,0,',','.') }}
 </div>

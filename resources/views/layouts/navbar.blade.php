@@ -23,6 +23,14 @@
                     </a>
                 </li>
 
+                <!-- Tentang Saya -->
+<li class="nav-item">
+    <a class="nav-link px-3 py-2 rounded-pill transition-all {{ Request::is('tentang') ? 'active-girl' : '' }}"
+        href="{{ route('tentang') }}">
+        <i class="fa-solid fa-user me-1"></i> Tentang Saya
+    </a>
+</li>
+
                 @if(auth()->check() && strtolower(auth()->user()->role->name) === 'admin')
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 rounded-pill transition-all {{ Request::is('admin/users') ? 'active-girl' : '' }}"
@@ -46,6 +54,7 @@
                     </a>
                 </li>
 
+
                 <!-- Bagian Tombol Logout di Pinggir -->
                 <li class="nav-item ms-auto mt-3 mt-lg-0">
                     <form action="{{ route('logout') }}" method="POST" class="m-0">
@@ -55,6 +64,7 @@
                         </button>
                     </form>
                 </li>
+                
 
             </ul>
 
