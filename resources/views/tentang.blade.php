@@ -417,8 +417,11 @@
             <a href="{{ route('tentang') }}" class="active">
                 <i class="fa-solid fa-user"></i>
                 Tentang Saya
+        </a>
+                <a href="{{ url('/produk') }}">
+                <i class="fa-solid fa-shoe-prints"></i>
+                Pengguna
             </a>
-
            
 
             <a href="{{ url('/produk') }}">
