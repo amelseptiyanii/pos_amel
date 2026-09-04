@@ -132,7 +132,7 @@
             border-radius: 30px;
             padding: 40px;
             display: grid;
-            grid-template-columns: 280px 1fr; /* TANDA - YANG BIKIN ERROR SUDAH DIHAPUS DI SINI */
+            grid-template-columns: 280px 1fr;
             gap: 45px;
             margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(200, 0, 60, 0.08);
@@ -417,12 +417,13 @@
             <a href="{{ route('tentang') }}" class="active">
                 <i class="fa-solid fa-user"></i>
                 Tentang Saya
-        </a>
-                <a href="{{ url('/produk') }}">
-                <i class="fa-solid fa-shoe-prints"></i>
+            </a>
+
+            <!-- PERBAIKAN PADA MENU PENGGUNA -->
+            <a href="{{ route('pengguna') }}">
+                <i class="fa-solid fa-users"></i>
                 Pengguna
             </a>
-           
 
             <a href="{{ url('/produk') }}">
                 <i class="fa-solid fa-shoe-prints"></i>
